@@ -71,11 +71,11 @@ class MyHome extends StatelessWidget {
   }
 
   void _userTerimaTawaran() async {
-    // Get.snackbar(
-    //   'Kode OTP Telah di Kirim',
-    //   'Silahkan input kode OTP',
-    // );
-    // await Future.delayed(Duration(seconds: 4));
+    Get.snackbar(
+      'Kode OTP Telah di Kirim',
+      'Silahkan input kode OTP',
+    );
+    await Future.delayed(Duration(seconds: 4));
     _sendOtp();
     _inputOtpDialog();
   }
