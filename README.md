@@ -1,16 +1,103 @@
-# approval
+# flutter_todo_web
 
-A new Flutter project.
+### Live on : [hidayathamir.github.io/flutter_approval/](https://hidayathamir.github.io/flutter_approval/)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+### **Home page**
+![](README_assets/home.png)
+Homepage (Radio yes no).
+![](README_assets/snackbar.png)
+Snackbar.
+![](README_assets/dialog.png)
+Dialog.
+![](README_assets/resend_otp_btn_count.png)
+Resend OTP button count.
+![](README_assets/form_validate.png)
+Form validate.
 
-A few resources to get you started if this is your first Flutter project:
+<br>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### **Spinner**
+Flutter web need a little bit more time to initiate, Show spinner while load the web so user will know the web is working.
+![](README_assets/spinner.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+<details>
+  <summary>Add this div to web/index.html below body opening tag</summary>
+  
+  ```
+  <div class="loading">
+    <div class="loader"></div>
+  </div>
+  ```
+</details>
+
+<details>
+  <summary>Add this style to web/index.html above head closing tag</summary>
+
+  ```
+  <!-- spinner when init web -->
+  <style>
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+    
+    .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border: 15px solid ;
+      border-top: 16px solid blue;
+      border-right: 16px solid white;
+      border-bottom: 16px solid blue;
+      border-left: 16px solid white;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+    }
+    
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  ```
+</details>
+
+<br>
+
+### **Base**
+Flutter default project base is `<base href="/">` so we need to change according to github pages url `<base href="/(repo-name)/">`. in `web/index.html` change from `<base href="/">` to `<base href="/flutter_approval/">`.
+
+<br>
+
+### **Build**
+`flutter build web --release`.
+
+<br>
+
+### **Docs folder**
+In root folder create new folder `docs/`. Github pages need this folder to live, copy all file in `build/web/` to `docs/`. Then in github `settings > github pages > source` chose main for branch and chose /docs for the folder.
+![](README_assets/github_pages.png)
+If it's says "Your site is published at" that mean your Flutter web is live.
